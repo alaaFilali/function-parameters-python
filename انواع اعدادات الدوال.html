@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>انواع اعدادات الدوال</title>
+</head>
+
+<body>
+  <div class="book-page">
+    <h1 class="book-title">انواع اعدادات الدوال</h1>
+    <div class="content">
+      <p>
+        في الدرس السابق رأينا نوع بسيط من الدوال التي تسمح بمدخلات واليوم سوف نرى
+        دوال تسمح بأكثر من مدخل وليس واحد فقط وسوف تكون نسخة من الدالة والسابقة
+        ولكن هذه المرة سوف تأخد اسم و
+        location
+        و نستعمل الفاصلة لنفصل بين المدخلات وسوف نقوم بطباعة بعض الجمل داخل الدالة
+      </p>
+      <pre><code>    
+def greet_with(name, location):
+    print(f"hello {name}")
+    print(f"what is it like in {locaiton}")
+
+greet_with("Alaa", "Harchoun")
+      </code></pre>
+      <p>
+        والان يمكنك اضافة العدد الذي تريده من المدخلات في الدوال الخاصة بك لتجعلها
+        تفعل اشياء مختلفة في كل مرة
+      </p>
+      <p>
+        الان اليك سؤال ماذا لو قمت بمنادات الدالة الخاصة بي ولكنني هذه المرة
+        قمت بالقلب بين المدخلات 
+      </p>
+      <pre><code>    
+greet_with("Harchoun", "Alaa")
+      </code></pre>
+      <p>
+        اذن فالذي حدث هنا انه تم تمرير القيم بناءا على الترتيب الذي وضعت فيه
+        فالقيمة
+        "Harchoun"
+        تم تمريرها للمتغير
+        name
+        و القيمة
+        "Alaa"
+        تم تمريرها لل متغير 
+        location
+        وهذا مايسمى ب
+        Positional Arguments
+        لاننا عندما نادينا الدالة لم نحدد كل قيمة تمرر لاي متغير 
+        فتم تمريرها على حسب ترتيبها او موقعها ومن هنا جاء الاسم 
+        ونفس الشيء سوف يحدث حتى ولو كان عندنا مثلا ثلاث مدخلات او اكثر
+      </p>
+      <p>
+        ماذا لو اردت ان تكون واضحا عندما تقوم بمنادات الدالة كل قيمة تذهب
+        لاي متغير في تلك الحالة يمكنك استعمال 
+        Keyword Arguments
+        في مكان تمرير القيم فقط يمكنك ان تحدد اسم المتغير ثم تستعمل علامة
+        =
+        وتمرر القيمة
+        وعندما نقوم بتغيير الترتيب فلن يحدث المشكل السابق 
+      </p>
+      <pre><code>    
+def greet_with(name, location):
+    print(f"hello {name}")
+    print(f"what is it like in {locaiton}")
+
+greet_with(name="Alaa", location"Harchoun")
+        </code></pre>
+        <p>
+          في الدرس القادم لدي تمرين لك لترسخ كل ما تعلمته حتى الان.
+        </p>
+    </div>
+  </div>
+</body>
+
+</html>
