@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>تمرين التحقق من الاعداد الاولية</title>
+</head>
+
+<body>
+    <div class="book-page">
+        <h1 class="book-title">تمرين التحقق من الاعداد الاولية</h1>
+        <div class="content">
+            <p>
+                سوف نقوم ببناء برنامج يقوم بالتحقق من الاعداد الاولية 
+            </p>
+            <p>
+                الاعداد الاولية التي الاعداد التي تقبل القسمة على نفسها و الرقم 
+                1
+                فقط مثلا 
+                2
+                هو رقم اولي و 
+                3
+                هو رقم اولي بينما 
+                4 
+                ليس عدد اولي
+            </p>
+            <p>
+                هناك العديد من الاستعمالات للاعداد الاولية منها 
+                bitcoin 
+                و التشفير 
+            </p>
+            <p>
+                هذا بعض الكود بحيث نطلب من المستخدم ان يدخل رقما ثم نقوم بمنادات
+                الدالة التي سوف تكتبها انت وتسمى 
+                prime_checker
+                وتأخد مدخل واحد ويسمى 
+                number
+                و تم تمرير العدد 
+                n
+                له ليتم التحقق منه ان كان اولي او لا
+            </p>
+            <pre><code>    
+n = int(input("Check this number: "))
+prime_checker(number=n)
+      </code></pre>
+      <p>
+        حظا موفقا في حل التمرين.
+      </p>
+      <p>
+        الحل:
+      </p>
+      <pre><code>  
+def prime_checker(number):
+    is_prime = True
+    for i in range(2, number):
+        if number % i == 0:
+            is_prime = False
+    if is_prime:
+        print("It's a prime number.")
+    else:
+        print("It's not a prime number")
+
+n = int(input("Check this number: "))
+prime_checker(number=n)
+              </code></pre>
+              <p>
+                ببساطة شرح الحل كالتالي نحن نعلم ان العدد ان كان لا يقبل القسمة الا على
+                نفسه و الرقم 
+                1
+                فهو عدد اولي اذن نقوم بالتحقق ان كان ذلك العدد يقبل القسمة على اي عدد 
+                بين 1 و العدد نفسه فان كان كذلك فهو ليس عدد اولي والمتغير 
+                is_prime 
+                تتغير قيمته من 
+                True
+                الى 
+                False
+                وبناءا عليه نعرف اي جملة نطبع للمستخدم
+              </p>
+              <p>
+                هذا الحل ليس هو افضل حل هناك حلول كثيرة افضل بكثير من هذا الحل 
+                ولكن مايهم هنا انك تفهم كيف تتعامل مع مدخلات الدوال وهذا ما يخولك لتكمل معنا
+                في الدروس القادمة
+              </p>
+              <p>
+                في الدرس القادم سوف نبدأ ببناء برنامج التشفير.
+              </p>
+        </div>
+    </div>
+</body>
+
+</html>
