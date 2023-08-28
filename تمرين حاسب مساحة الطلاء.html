@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>تمرين حاسب مساحة الطلاء</title>
+</head>
+
+<body>
+    <div class="book-page">
+        <h1 class="book-title">تمرين حاسب مساحة الطلاء</h1>
+        <div class="content">
+            <p>
+                في تمرين اليوم سوف نقوم بطلاء بعض الجدران والفكرة هنا انه سوف نكتب
+                برنامج يخبرنا كم من قارورة طلاء نحتاج لطلاء مساحة معطاة
+                الرياضيات المستعلمة في حل التمرين سهلة جدا
+                بحيث سوف نستعمل مدخلات الدوال ونجعل الدالة تعطينا نتيجة مختلفة
+                على حسب مساحة الجدران المراد طلائها
+            </p>
+            <p>
+                لدي بعض الكود لك ليساعدك لتتحقق ان كان حلك صحيحا وسوف نتسعمل الدالة التي سوف
+                تكتبها لنقوم بحساب عدد قارورات الطلاء التي نحتاج شراءها
+            </p>
+            <pre><code>    
+test_h = int(input("Height of wall: "))
+test_w = int(input("Width of wall: "))
+coverage = 5
+print_calc(height=test_h, width=test_w, cover=coverage)
+      </code></pre>
+            <p>
+                التعليمات:
+                انت تقوم بطلاء بعض الجدران التعليمات في قارورة الطلاء تقول انه
+                <strong>
+                    قارورة واحدة
+                    من الطلاء تستطيع طلاء خمسة متر مربع من الجدار
+                </strong>
+                يعطى طول الجدار و عرضه عشوائيا اكتب دالة تقوم بحساب عدد القارورات التي تحتاج
+                شراءها.
+            </p>
+            <p>
+                عدد القارورات
+                =
+                (
+                طول الجدار
+                X
+                عرض الجدار
+                )
+                /
+                المساحة المغطات بقارورة واحدة
+            </p>
+            <p>
+                ملاحظة:
+                ان كانت النتيجة بالفاصلة يجب ان تدور و
+                <strong>
+                    اسم الدالة ومدخلاتها يجب ان
+                    تطابق التي في الكود المعطى فوق
+                </strong>
+                حتى لا تواجه اي
+                errors
+            </p>
+            <p>
+                حظا موفقا في حل التمرين
+            </p>
+            <p>
+                الحل كاملا:
+            <pre><code>    
+import math
+
+def print_calc(height, width, cover):
+    area = height * width
+    num_of_cans = math.ceil(area / cover)
+    print(f"You'll need {num_of_cans} of paint.")
+
+test_h = int(input("Height of wall: "))
+test_w = int(input("Width of wall: "))
+coverage = 5
+print_calc(height=test_h, width=test_w, cover=coverage)
+            </code></pre>
+            </p>
+            <p>
+                لاحظ انه استعملت دالة 
+                ceil 
+                من المكتبة
+                math
+                لان هذه الدالة تقوم بتدوير العدد الى اكبر عدد صحيح وليس مثل الدالة
+                round 
+                فلو استعملنا هذه الاخيرة وكانت النتيجة 
+                2.4
+                فسوف تصبح 
+                2
+                بينما لو استعملنا 
+                ceil
+                سوف تصبح النتيجة
+                3
+                لانه لايمكنك ان تشتري 
+                0.4
+                قارورة بل تشتري قارورة كاملة
+            </p>
+            <p>
+                اتمنى انك قمت بحل التمرين من دون مساعدة ونلتقي في الدرس
+                القادم بحيث لدي تمرين اصعب قليلا هذه المرة.
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
