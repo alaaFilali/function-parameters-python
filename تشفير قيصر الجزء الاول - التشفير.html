@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>تشفير قيصر الجزء الاول - التشفير</title>
+</head>
+
+<body>
+    <div class="book-page">
+        <h1 class="book-title">تشفير قيصر الجزء الاول - التشفير</h1>
+        <div class="content">
+            <p>
+                الان حان الوقت للبدء في بناء مشروع برنامج التشفير او ما يسمى ب
+                تشفير قيصر وهو عبارة عن طريقة لتشفير الرسائل والكتابة فقد استعملها هذا
+                الجنرال الروماني في وقته
+                julius caesar
+                بحيث عندما يريد ارسال رسالة عسكرية سرية جدا كان يقوم بتشفيرها وطريقة التشفير
+                هذه تعمل كالتالي:
+            </p>
+            <p>
+                كان يقوم بازاحة كل حرف من الرسالة بعدد معين من الحروف مثلا لدينا الابجدية
+                A B C D E F G ...
+                واردنا تشفير الحرف
+                E
+                فنضع نفس الابجدية تحتها
+                في هذه الحالة الازاحة برقم
+                0
+                لن بتغير شيئ
+            </p>
+            <pre><code>    
+A B C D E F G ...
+| | | | | | | ...
+A B C D E F G ...
+      </code></pre>
+            <p>
+                فلو اردنا الازاحة برقم
+                1
+                مثلا سوف تصبح كالتالي
+            </p>
+            <pre><code>    
+  A B C D E F G ...
+| | | | | | | | ...
+A B C D E F G H ...
+              </code></pre>
+            <p>
+                وهكذا يصبح الحرف
+                A
+                هو الحرف
+                B
+                والحرف
+                B
+                هو الحرف
+                C
+                وهكذا
+                ويمكننا الازاحة باي رقم نريده
+            </p>
+            <p>
+                بنهاية هذه الحصة سوف نقوم ببناء نسخة رقمية تقوم بتشفير الرسائل
+                وهذه النتيجة الاخيرة
+            </p>
+            <pre><code>    
+Type 'encode' to encrypt, type 'decode' to decrypt:
+encode
+Type your message:
+hello world
+Type the shift number:
+5
+Here's the encoded result: mjqqt btwqi
+Type 'yes' if you want to go again. Otherwise type 'no'.
+yes
+Type 'encode' to encrypt, type 'decode' to decrypt:
+decode
+Type your message:
+mjqqt btwqi
+Type the shift number:
+5
+Here's the decoded result: hello world
+Type 'yes' if you want to go again. Otherwise type 'no'.
+no
+Goodbye
+                      </code></pre>
+            <p>
+                بحيث سوف يسألك ان كنت تريدان تقوم بتشفير رسالة ما او فك تشفير رسالة ما
+                اما ان تختار
+                encode
+                او
+                decode
+                فاذا اخترت التشفير سوف يخبرك بان تدخل الرسالة المراد تشفيرها
+                ثم يسألك عن رقم الازاحة
+                ثم يعطيك الرسالة مشفره ثم يسألك مجددا هل تريد ان تكمل في البرنامج او لا
+                يمكنك ان تختار اما نعم او لا
+                مثلا اخترت نعم ثم اردت فك تشفير رسالة ما تدخل
+                decode
+                ثم تضع الرسالة ورقم الازاحة
+                وسوف يعطيك الرسالة بعد فك التشفير
+                هذا يعني انك المرسل والمتلقي للرسالة هما الوحيدان اللذان يستطيعان
+                قراءة الرسالة لانهما الوحيدان اللذان يعرفان رقم الازاحة وهكذا يمكنك
+                ارسال الرسائل بكل سرية لصديقك ولن يفهمها احد الا انت وهو مادام يعرف
+                رقم الازاحة
+            </p>
+            <p>
+                لنبدأ في كتابة كود البرنامج وسوف تجد هنا بعض الكود لتبدأ منه
+            </p>
+            <pre><code>    
+alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+
+direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
+text = input("Type your message:\n").lower()
+shift = int(input("Type the shift number:\n"))
+
+#TODO-1: Create a function called 'encrypt' that takes the 'text' and 'shift' as inputs.
+    #TODO-2: Inside the encrypt function, shift each letter of the text forwards in the alphabet by the shift amount and print the encrypted text.  
+    #e.g. 
+    #plain_text = "hello"
+    #shift = 5
+    #cipher_text = "mjqqt"
+    #print output: "The encoded text is mjqqt"
+
+#TODO-3: Call the encrypt function and pass in the user inputs. You should be able to test the code and encrypt a message. 
+                            </code></pre>
+            <p>
+                هنا لدي قائمة بكل حروف اللغة الانجليزية و طلبت من المستخدم ان يدخل 
+                3
+                معلومات 
+                ان كان يريد التشفير او فك التشفير 
+                و الرسالة التي يريد معالجتها 
+                وسف نجعل جميع الحروف صغيرة حتى نسهل الامر قليلا
+                و رقم الازاحة ومن ثم تحويله الى عدد 
+                int
+                و تم تخزينها في متغيرات لك لتستعملها في كتابة الكود الخاص بك
+                يمكنك ان تشغل البرنامج الان قبل ان تبدأ في كتابة الكود
+            </p>
+            <p>
+                هناك ثلاث خطوات عليك تحقيقها الاولى هي ان تقوم بكتابة دالة تسمى 
+                encrypt
+                التي سوف تأخد الرسالة ورقم الازاحة كمدخلات 
+                text, shift
+            </p>
+            <pre><code>
+#TODO-1: Create a function called 'encrypt' that takes the 'text' and 'shift' as inputs.
+            </code></pre>
+            <p>
+                المرحلة الثانية داخل الدالة 
+                encrypt
+                قم بازاحة جميع الحروف برقم الازاحة كما شرحنا في بداية الدرس وقم بطباعة الرسالة
+                فاذا ادخل المستخدم الرسالة
+                hello 
+                ورقم الازاحة هو 
+                5
+                فالنتيجة هي الرسالة المشفرة
+                mjqqt
+            </p>
+            <pre><code>
+#TODO-2: Inside the encrypt function, shift each letter of the text forwards in the alphabet by the shift amount and print the encrypted text.  
+#e.g. 
+#plain_text = "hello"
+#shift = 5
+#cipher_text = "mjqqt"
+#print output: "The encoded text is mjqqt"
+            </code></pre>
+            <p>
+                في المرحلة الاخيرة من جزء التشفير هذا سوف نقوم بمنادات الدالة ونقوم
+                بتمرير المدخلات التي سألنا المستخدم عنها في البداية 
+            </p>
+            <pre><code>
+#TODO-3: Call the encrypt function and pass in the user inputs. You should be able to test the code and encrypt a message. 
+            </code></pre>
+            <p>
+                الان جاء دورك لتحاول حل هذه الخطوات لوحدك الان وبعد ما تكمل المحاولة عد الى
+                هنا وقارن حلك مع الحل الخاص بي وحظا موفقا
+            </p>
+            <p>
+                حل الخطوة الاولى: 
+            </p>
+            <pre><code>
+def encrypt(plain_text, shift_amount):
+            </code></pre>
+            <p>
+                يمكنك هنا ان تسمي مدخلات الدالة نفس اسماء متغيرات الرسالة 
+                ورقم الازاحة التي سألت المستخدم عنها في البداية ولكن من الافضل 
+                الا تفعل ذلك حتى لا يقع خلط فيما بعد حاول دائما ان تجعل اسماء ال
+                arguments 
+                و
+                parameters 
+                مختلف حتى تسهل على نفسك التفريق بينهما
+                اذا لم تفهم ما نتحدث عنه الان ارجع الى الدروس السابقة وركز جيدا
+            </p>
+            <p>
+                حل الخطوة الثانية: 
+            </p>
+            <pre><code>
+def encrypt(plain_text, shift_amount):
+    cipher_text = ""
+    for letter in plain_text:
+        position = alphabet.index(letter)
+        new_position = position + shift_amount
+        new_letter = alphabet[new_position]
+        cipher_text += new_letter
+    print(f"The encoded text is {cipher_text}")
+            </code></pre>
+            <p>
+                هذا هي الخطوة الاصعب في هذا الجزء 
+            </p>
+            <p>
+هنا يتم إنشاء متغير فارغ يسمى cipher_text والذي سيحتوي على النص المشفر بمرور الزمن.
+
+ثم نستعمل الحلقة (loop) لنمر عبر كل حرف في النص الأصلي plain_text.
+
+ثم نحدد موقع الحرف الحالي (letter) ضمن قائمة الأحرف المُسماة alphabet.
+
+ثم نحسب الموقع الجديد بإضافة قيمة الازاحة (shift_amount) إلى الموقع الحالي للحرف.
+
+يتم استرجاع الحرف الجديد المشفر من alphabet باستخدام الموقع الجديد المحسوب. هذا هو الحرف الذي سيُضاف إلى النص المشفر.
+
+الحرف المشفر الجديد يتم إضافته إلى النص المشفر cipher_text.
+
+بعد انتهاء الحلقة وبناء النص المشفر بالكامل، يتم طباعة النص المشفر مع رسالة توضح أن النص تم تشفيره.
+            </p>
+            <p>
+                حل الخطوة الاخيرة: 
+            </p>
+            <pre><code>
+encrypt(plain_text=text, shift_amount=shift)
+            </code></pre>
+            <p>
+                يمكنك استعمال ال 
+                keyword arguments 
+                او ال 
+                positional arguments
+                انا هنا استعملت 
+                keyword arguments
+            </p>
+            <p>
+                والان نحن جاهزين لتجربة الكود الخاص بنا لحد الان وهذه هي النتيجة: 
+            </p>
+            <pre><code>
+Type 'encode' to encrypt, type 'decode' to decrypt:
+encode
+Type your message:
+hello
+Type the shift number:
+5
+The encoded text is mjqqt
+            </code></pre>
+            <p>
+                قد تظن اننا قد انتهينا وكل شيء مثالي ولكن ماذا لو اردنا تشفير رسالة
+                فيها حروف قريبة من نهاية القائمة مثلا الحرف 
+                z
+                و رقم الازاحة هو 
+                5
+                ماذا سوف يحدث؟
+            </p>
+            <p>
+                موقع الحرف 
+                z
+                هو 
+                25 
+                ورقم الازاحة هو 
+                5
+                اذن الموقع الجديد هو 
+                30
+                و هو موقع لايوجد اصلا في قائمة الحروف 
+                alphabet
+                اذن سوف نحصل على 
+                IndexError
+                هل تتذكره من الدروس السابقة
+                كيف نحل هذا المشكل؟ 
+            </p>
+            <p>
+                الحل ببساطة ان نقوم بنسخ قائمة ال 
+                alphabet 
+            </p>
+            <pre><code>
+alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+            </code></pre>
+            <p>
+                والدالة 
+                index 
+                التي ترجع موقع الحرف في القائمة سوف ترجع موقع الحرف الاول التي تجده وهذا مثالي بالنسبة لنا
+            </p>
+            <p>
+                هناك طرق افضل لحل هذا المشكل الصغير ولكن اظن ان هذا هو اسهل حل وكان هذا كل شيئ
+                بالنسبة الى الجزء الاول من برنامج التشفير ونلتفي في الجزء الثاني باذن الله.
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
