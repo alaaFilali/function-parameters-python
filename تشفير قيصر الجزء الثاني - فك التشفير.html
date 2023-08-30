@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>تشفير قيصر الجزء الثاني - فك التشفير</title>
+</head>
+
+<body>
+    <div class="book-page">
+        <h1 class="book-title">تشفير قيصر الجزء الثاني - فك التشفير</h1>
+        <div class="content">
+            <p>
+                الان بعدما جعلنا البرنامج الخاص بنا يقوم بعملية التشفير حان الوقت الان 
+                لنجعله يقوم بالعكس وهو فك التشفير يناءا على رقم ازاحة
+            </p>
+            <p>
+                مثلا لو اردنا فك تشفير الحرف 
+                G
+            </p>
+            <pre><code>    
+A B C D E F G ...
+| | | | | | | ...
+A B C D E F G ...
+      </code></pre>
+      <p>
+        فعلينا ان نزيح الحروف بالعكس لكي نحصل على الحرف المشفر مثلا الحرف تم ازاحته ب 
+        3
+        اذن النتيجة هي الحرف 
+        D
+      </p>
+      <pre><code>    
+      A B C D ...
+| | | | | | | ...
+A B C D E F G ...
+              </code></pre>
+              <p>
+                لدي الكود كامل من الدرس السابق وتم اضافة بعض التعليقات لتبين المراحل الثلاث
+                التي تحتاج اكمالها لاكمال جزء اليوم من بناء البرنامح
+              </p>
+              <pre><code>
+alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+
+direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
+text = input("Type your message:\n").lower()
+shift = int(input("Type the shift number:\n"))
+
+def encrypt(plain_text, shift_amount):
+    cipher_text = ""
+    for letter in plain_text:
+        position = alphabet.index(letter)
+        new_position = position + shift_amount
+        cipher_text += alphabet[new_position]
+    print(f"The encoded text is {cipher_text}")
+
+#TODO-1: Create a different function called 'decrypt' that takes the 'text' and 'shift' as inputs.
+
+    #TODO-2: Inside the 'decrypt' function, shift each letter of the 'text' *backwards* in the alphabet by the shift amount and print the decrypted text.  
+    #e.g. 
+    #cipher_text = "mjqqt"
+    #shift = 5
+    #plain_text = "hello"
+    #print output: "The decoded text is hello"
+
+#TODO-3: Check if the user wanted to encrypt or decrypt the message by checking the 'direction' variable. Then call the correct function based on that 'drection' variable. You should be able to test the code to encrypt *AND* decrypt a message.
+              </code></pre>
+              <p>
+                اولا علينا ان نقوم بكتابة دالة فك التشفير وتسمى
+                decrypt
+                التي سوف تأخد الرسالة التي سوف يدخلها المستخدم و رقم الازاحة
+                shift
+                كمدخلات 
+              </p>
+              <pre><code>
+#TODO-1: Create a different function called 'decrypt' that takes the 'text' and 'shift' as inputs.
+              </code></pre>
+              <p>
+                ثم داخل الدالة سوف نكتب الكود الذي سوف يقوم بفك التشفير بحيث سوف نقوم 
+                بازاحة كل حرف في الرسالة المدخلة عكسيا برقم الازاحة فمثلا لو ادخل المستخدم الرسالة
+                mjqqt 
+                ورقم الازاحة كان 
+                5
+                اذن نتيجة فك التشفير هي الرسالة 
+                hello
+                وقم بطباعتها 
+              </p>
+              <pre><code>
+    #TODO-2: Inside the 'decrypt' function, shift each letter of the 'text' *backwards* in the alphabet by the shift amount and print the decrypted text.  
+    #e.g. 
+    #cipher_text = "mjqqt"
+    #shift = 5
+    #plain_text = "hello"
+    #print output: "The decoded text is hello"
+              </code></pre>
+              <p>
+                اخيرا سوف نقوم باستخدام المتغير 
+                direction 
+                الذي يحمل اما القيمة 
+                encode 
+                في حال ما اراد المستخدم ان يقوم بتشفير رسالة
+                او 
+                decode
+                في حال ما اراد ان يقوم بفك تشفير رسالة ما
+                ثم نستعمل عبارة 
+                if
+                لنتحقق ايهما اختار وبناءا على ذلك سوف نقوم بمنادات الدالة المناسبة
+              </p>
+              <p>
+                النتيجة المرجوة بعد اكمالك لجميع المراحل كالتالي:
+              </p>
+              <pre><code>
+Type 'encode' to encrypt, type 'decode' to decrypt:
+decode
+Type your message:
+mjqqt
+Type the shift number:
+5
+The decoded text is hello
+              </code></pre>
+              <p>
+                حظا موفقا ونلتقي بعد قليل
+              </p>
+              <p>
+                سوف نبدأ في الحل والجزء الاول سهل نوعا ما كل ما علينا فعله هو 
+                تعريف دالة 
+                decrypt
+                واعطائها بعض المدخلات
+              </p>
+              <pre><code>
+def decrypt(cipher_text, shift_amount):
+              </code></pre>
+              <p>
+                مجددا قمت بتغيير اسماء ال 
+                parameters
+                حتى لا تختلط مع اسماء ال 
+                arguments 
+                فيما بعد
+              </p>
+              <p>
+                حل المرحلة الثانية: 
+              </p>
+              <pre><code>
+def decrypt(cipher_text, shift_amount):
+    plain_text = ""
+    for letter in cipher_text:
+        position = alphabet.index(letter)
+        new_position = position - shift_amount
+        plain_text += alphabet[new_position]
+    print(f"The decoded text is {plain_text}")
+              </code></pre>
+              <p>
+                الفرق بين دالة ال 
+                ecrypt 
+                و دالة 
+                decrypt 
+                هو اننا نقوم بانقاص رقم الازاحة بدل زيادته لل 
+                position 
+                الجديد للحرف وبهذا نكون قد ازحنا الحرف بالعكس وهكذا نحصل على الحرف 
+                الذي تم تشفيره من قبل
+                <br>
+                مع تغيير في اسماء المتغيرات حتى تلائم الدالة الجديدة
+              </p>
+              <p>
+                اخيرا في المرحة الثالثة كل ما على فعله هو التحقق ما ان اراد المستخدم ان 
+                يقوم بالتشفير او فك التشفير باستخدام المتغير 
+                direction
+                ونقوم بمنادات الدالة المناسبة بناء على ذلك
+              </p>
+              <pre><code>
+if direction == "encode":
+    encrypt(plain_text=text, shift_amount=shift)
+elif direction == "decode":
+    decrypt(cipher_text=text, shift_amount=shift)
+              </code></pre>
+              <p>
+                الكود كاملا: 
+              </p>
+              <pre><code>
+alphabet = [
+    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o',
+    'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'a', 'b', 'c', 'd',
+    'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
+    't', 'u', 'v', 'w', 'x', 'y', 'z'
+]
+
+direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
+text = input("Type your message:\n").lower()
+shift = int(input("Type the shift number:\n"))
+
+
+def encrypt(plain_text, shift_amount):
+    cipher_text = ""
+    for letter in plain_text:
+        position = alphabet.index(letter)
+        new_position = position + shift_amount
+        cipher_text += alphabet[new_position]
+    print(f"The encoded text is {cipher_text}")
+
+
+def decrypt(cipher_text, shift_amount):
+    plain_text = ""
+    for letter in cipher_text:
+        position = alphabet.index(letter)
+        new_position = position - shift_amount
+        plain_text += alphabet[new_position]
+    print(f"The decoded text is {plain_text}")
+
+
+if direction == "encode":
+    encrypt(plain_text=text, shift_amount=shift)
+elif direction == "decode":
+    decrypt(cipher_text=text, shift_amount=shift)
+              </code></pre>
+              <p>
+                نلتقي في الجزء الثالث من مشروع بناء تشفير قيصر.
+              </p>
+        </div>
+
+    </div>
+</body>
+
+</html>
