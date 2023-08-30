@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>تشفير قيصر الجزء الثالث - تنظيم الكود</title>
+</head>
+
+<body>
+    <div class="book-page">
+        <h1 class="book-title">تشفير قيصر الجزء الثالث - تنظيم الكود</h1>
+        <div class="content">
+            <p>
+                الان بعد ما اصبح البرنامج الخاص بنا يقوم بالتشفير وفك التشفير 
+                ماذا تبقى لم نفعل؟ علينا ان نفكر كيف نقوم بتحسين البرنامج الخاص بنا اكثر
+            </p>
+            <p>
+                فلو تلقي نظرة على دالة 
+                encrypt 
+                و 
+                decrypt 
+                تلاحظ انهما متشابهان كثيرا 
+            </p>
+            <p>
+                ما سوف نقوم به الان هو ان نقوم بدمج الدالتين مع بعض في دالة واحدة تسمى 
+                caesar
+            </p>
+            <pre><code>    
+#TODO-1: Combine the encrypt() and decrypt() functions into a single function called caesar(). 
+      </code></pre>
+      <p>
+        وسوف نتخلص من دوال ال 
+        ecrypt 
+        و 
+        decrypt
+        و
+        عبارة ال
+        if
+        وسوف نجمعهم جميعا في دالة واحدة 
+        تقوم بالتشفير وفك التشفير معا بناءا على مدخل جديد سوف نضيفه
+      </p>
+      <p>
+        و في المرحلة الثانية من جزء اليوم سوف نقوم بمنادات الدالة الجديدة 
+        وسوف تأخد ثلاث مدخلات هذه المرة الرسالة
+        text
+        و رقم الازاحة 
+        shift
+        والاتجاه
+        direction
+      </p>
+      <pre><code>
+#TODO-2: Call the caesar() function, passing over the 'text', 'shift' and 'direction' values.
+      </code></pre>
+      <p>
+        وهكذا سوف نتخلص من التكرار في الكود الخاص بنا, الان فكر في كيفية 
+        حل جميع هذه المراحل من خلال استخدام ما تعلمته في الدروس السابقة
+        ونلتقي بعد قليل مع الحل الكامل.
+      </p>
+      <p>
+        حل المرحلة الاولى: 
+      </p>
+      <pre><code>
+def caesar(start_text, shift_amount, cipher_direction):
+    end_text = ""
+    if cipher_direction == "decode":
+        shift_amount *= -1
+    for letter in start_text:
+        position = alphabet.index(letter)
+        new_position = position + shift_amount
+        end_text += alphabet[new_position]
+    print(f"Here's the {direction}d result: {end_text}")
+      </code></pre>
+      <p>
+        كما تلاحظ ليس هناك تغييرات كبيرة بعد دمج الدالتين مع بعض فقط في تسمية 
+        بعض المتغيرات والرسالة المطبوعة للمستخدم 
+        ولكن الجزء الاهم والاختلاف بين الدالتين كيف تم دمجه في هذه الدالة الجديدة وهو
+        في حالة التشفير كنا نضيف رقم الازاحة بينما في حالة فك التشفير كنا نقوم 
+        بانقاص رقم الازاحة حلها ببساطة فالدالة الخاصة بنا تأخد مدخل جديدة وهو
+        الاتجاه الذي يدخله المستخدم فان كان الاتجاه هو فك التشفير 
+        decode 
+        نقوم بضرب رقم الازاحة في 
+        -1 
+        وهكذا اضافة رقم سالب هي نفس الشيئ مع طرح عدد موجب
+        <br>
+        اما اذا اراد المستخدم التشفير فلن يتم تنفيذ ما بداخل الشرط وسوف يعمل البرنامج كما هو متوقع منه
+      </p>
+      <p>
+        حل المرحلة الثانية: 
+      </p>
+      <pre><code>
+caesar(start_text=text, shift_amount=shift, cipher_direction=direction)
+      </code></pre>
+      <p>
+        كما ترون قمنا باضافة مدخل جديد عن الدالتين السابقتين وهو الاتجاه 
+        الذي يدخله المستخدم في بداية الكود ول تتذكر هو اما كلمة 
+        encode 
+        او 
+        decode
+      </p>
+      <p>
+        كما ترون قمنا بجعل الكود الخاص بنا بسيط جدا مقارنة بالسابق
+      </p>
+      <p>
+        الكود كاملا: 
+      </p>
+      <pre><code>
+alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+
+direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
+text = input("Type your message:\n").lower()
+shift = int(input("Type the shift number:\n"))
+
+
+def caesar(start_text, shift_amount, cipher_direction):
+    end_text = ""
+    if cipher_direction == "decode":
+        shift_amount *= -1
+    for letter in start_text:
+        position = alphabet.index(letter)
+        new_position = position + shift_amount
+        end_text += alphabet[new_position]
+    print(f"Here's the {direction}d result: {end_text}")
+
+
+caesar(start_text=text, shift_amount=shift, cipher_direction=direction)
+      </code></pre>
+        </div>
+
+    </div>
+</body>
+
+</html>
