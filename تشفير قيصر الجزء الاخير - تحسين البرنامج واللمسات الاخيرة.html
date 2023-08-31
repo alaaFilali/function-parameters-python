@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>تشفير قيصر الجزء الاخير - تحسين البرنامج واللمسات الاخيرة</title>
+</head>
+
+<body>
+    <div class="book-page">
+        <h1 class="book-title">تشفير قيصر الجزء الاخير - تحسين البرنامج واللمسات الاخيرة</h1>
+        <div class="content">
+            <p>
+                وصلنا الى اخر جزء من بناء برنامج تشفير قيصر ونحن الان بصدد انهائه في درس اليوم
+            </p>
+            <p>
+                اولا قم باضافة هذا ال
+                logo
+                الى ملف اخر في المشروع الخاص بك وسمها 
+                art.py
+                وضع فيها هذا اللوغو الخاص بالمشروع الخاص بنا
+                وهو عبارة عن متغير واللوغو عبارة عن 
+                string
+            </p>
+            <pre><code>    
+logo = """           
+ ,adPPYba, ,adPPYYba,  ,adPPYba, ,adPPYba, ,adPPYYba, 8b,dPPYba,  
+a8"     "" ""     `Y8 a8P_____88 I8[    "" ""     `Y8 88P'   "Y8  
+8b         ,adPPPPP88 8PP"""""""  `"Y8ba,  ,adPPPPP88 88          
+"8a,   ,aa 88,    ,88 "8b,   ,aa aa    ]8I 88,    ,88 88          
+ `"Ybbd8"' `"8bbdP"Y8  `"Ybbd8"' `"YbbdP"' `"8bbdP"Y8 88   
+            88             88                                 
+           ""             88                                 
+                          88                                 
+ ,adPPYba, 88 8b,dPPYba,  88,dPPYba,   ,adPPYba, 8b,dPPYba,  
+a8"     "" 88 88P'    "8a 88P'    "8a a8P_____88 88P'   "Y8  
+8b         88 88       d8 88       88 8PP""""""" 88          
+"8a,   ,aa 88 88b,   ,a8" 88       88 "8b,   ,aa 88          
+ `"Ybbd8"' 88 88`YbbdP"'  88       88  `"Ybbd8"' 88          
+              88                                             
+              88           
+"""
+      </code></pre>
+            <p>
+                وكالعادة هذا بعض الكود لكي تبدأ في كتابة الكود لدرس اليوم
+                مع بعض التعليقات لتساعدك قليلا
+            </p>
+            <pre><code>
+alphabet = [
+    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o',
+    'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'a', 'b', 'c', 'd',
+    'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
+    't', 'u', 'v', 'w', 'x', 'y', 'z'
+]
+
+
+def caesar(start_text, shift_amount, cipher_direction):
+    end_text = ""
+    if cipher_direction == "decode":
+        shift_amount *= -1
+    for char in start_text:
+        #TODO-3: What happens if the user enters a number/symbol/space?
+        #Can you fix the code to keep the number/symbol/space when the text is encoded/decoded?
+        #e.g. start_text = "meet me at 3"
+        #end_text = "•••• •• •• 3"
+        position = alphabet.index(char)
+        new_position = position + shift_amount
+        end_text += alphabet[new_position]
+    print(f"Here's the {cipher_direction}d result: {end_text}")
+
+
+#TODO-1: Import and print the logo from art.py when the program starts.
+
+#TODO-4: Can you figure out a way to ask the user if they want to restart the cipher program?
+#e.g. Type 'yes' if you want to go again. Otherwise type 'no'.
+#If they type 'yes' then ask them for the direction/text/shift again and call the caesar() function again?
+#Hint: Try creating a while loop that continues to execute the program if the user types 'yes'.
+
+direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
+text = input("Type your message:\n").lower()
+shift = int(input("Type the shift number:\n"))
+
+#TODO-2: What if the user enters a shift that is greater than the number of letters in the alphabet?
+#Try running the program and entering a shift number of 45.
+#Add some code so that the program continues to work even if the user enters a shift number greater than 26.
+#Hint: Think about how you can use the modulus (%).
+
+caesar(start_text=text, shift_amount=shift, cipher_direction=direction)
+            </code></pre>
+            <p>
+                في المرحلة الاولى سوف نقوم بعمل 
+                import 
+                وطباعته من الملف الجديدة 
+                art.py
+            </p>
+            <pre><code>
+#TODO-1: Import and print the logo from art.py when the program starts.
+            </code></pre>
+            <p>
+                في المرحلة الثانية سوف نصلح 
+                bug
+                وهو ماذا لو ادخل المستخدم رقم ازاحة اكبر من الاحرف في قائمة 
+                alphabet
+                مثلا 
+                100
+            </p>
+            <pre><code>
+#TODO-2: What if the user enters a shift that is greater than the number of letters in the alphabet?
+#Try running the program and entering a shift number of 45.
+#Add some code so that the program continues to work even if the user enters a shift number greater than 26.
+#Hint: Think about how you can use the modulus (%).
+            </code></pre>
+            <p>
+                في المرحلة الثالثة سوف نقوم بالاجابة عن سؤال ماذا لو ادخل المستخدم
+                رقما او رمزا او فراغ فهذه الثلاثة لا نشفرها وانما نحافظ عليها كما هي
+            </p>
+            <pre><code>
+#TODO-3: What happens if the user enters a number/symbol/space?
+#Can you fix the code to keep the number/symbol/space when the text is encoded/decoded?
+#e.g. start_text = "meet me at 3"
+#end_text = "•••• •• •• 3"
+            </code></pre>
+            <p>
+                واخيرا سوف نجعل المستخدم يختار ان كان يريد اعادة تشغيل البرنامج مثلا انتهى من تشفير
+                رسالة ما ويريد تشفير رسالة اخرى سوف نسأله هل تريد اكمال استعمال البرنامج او انهائه
+            </p>
+            <pre><code>
+#TODO-4: Can you figure out a way to ask the user if they want to restart the cipher program?
+#e.g. Type 'yes' if you want to go again. Otherwise type 'no'.
+#If they type 'yes' then ask them for the direction/text/shift again and call the caesar() function again?
+#Hint: Try creating a while loop that continues to execute the program if the user types 'yes'.
+            </code></pre>
+            <p>
+                ببساطة نريد ان نجعل البرنامج الخاص بنا يعيد تشغيل نفسه مادام ان المستخدم
+                اختار 
+                yes
+                اما اذا اختار 
+                no 
+                في تلك الحالة ننهي البرنامج
+            </p>
+            <p>
+                حاول حل جميع هذه المراحل بنفسك وحظا موفقا.
+            </p>
+            <p>
+                نبدأ في الحل خطوة بخطوة
+            </p>
+            <p>
+                اول شيء هو عمل 
+                import 
+                وطباعة شعار البرنامج 
+            </p>
+            <pre><code>
+from art import logo
+print(logo)
+            </code></pre>
+            <p>
+                حل المرحلة الثانية هو استعمال علامة 
+                %
+                و الفكرة هنا هو ان رقم الازاحة 
+                shift 
+                لو كان كبيرا على عدد الحروف 
+                26
+                سوف يعطينا باقي القسمة عليه وهو ماسوف يجعل رقم الازاحة
+                في مجال عدد الحروف في قائمة 
+                alphabet
+                لان باقي القسمة اقل دائما من القاسم
+            </p>
+            <pre><code>
+shift = shift % 26
+            </code></pre>
+            <p>
+                ننتقل الان الى حل المرحلة الثالثة وهي ان نجعل الارقام والرموز و الفراغ 
+                لا يتم تشفيرها وانما تبقى كما هي اي انها هذا يعني ان الحروف التي سوف يتم تشفيرها 
+                هي الموجودة فقط في قائمة 
+                alphabet
+                <br>
+                اذن الحل ببساطة هو ان نتحقق من ان ال 
+                char 
+                من حلقة 
+                for 
+                ولاحظ انه تغير اسم متغير الحلقة من 
+                letter 
+                من الدروس السابقة الى 
+                char 
+                وهذا لان هذا الاخير يمكن ان يكون رقم او رمز او فراغ وليس فقط حرف من الحروف
+                <br>
+                هل هذا ال 
+                char
+                موجود في قائمة 
+                alphabet
+                في تلك الحالة سوف نقوم بالعمل السابق اما ان لم يكن موجود اذن في 
+                else
+                نضيفه مباشرة الى ال 
+                end_text
+            </p>
+            <pre><code>
+def caesar(start_text, shift_amount, cipher_direction):
+    end_text = ""
+    if cipher_direction == "decode":
+        shift_amount *= -1
+    for char in start_text:
+        if char in alphabet:
+            position = alphabet.index(char)
+            new_position = position + shift_amount
+            end_text += alphabet[new_position]
+        else:
+            end_text += char
+    print(f"Here's the {cipher_direction}d result: {end_text}")
+            </code></pre>
+            <p>
+                اخر مرحلة في بناء المشروع الخاص بنا وهو اصعب تحدي من بين التحديات السابقة 
+            </p>
+            <p>
+                مانريد تحقيقه هو عندما ينهي المستخدم ما اراده مثلا تشفير او فك تشفير 
+                نريد ان نسأله هل يريد الاكمال في استعمال البرنامج او لا من خلال سؤاله ويمكنه
+                ادخال 
+                yes
+                او 
+                no
+                ويمكنه اعادة تشفير رسالة اخرى او فك تشفير رسالة ما او انهاء البرنامج 
+                بحيث يمكنه اكمال العمل الى الابد من تشفير وفك تشفير حتى يريد هو انهائه 
+            </p>
+            <p>
+                هذه هي الاسطر البرمجية التي تحتاج ان تكرر لكي نحقق ذلك 
+            </p>
+            <pre><code>
+direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
+text = input("Type your message:\n").lower()
+shift = int(input("Type the shift number:\n"))
+
+shift = shift % 26
+
+caesar(start_text=text, shift_amount=shift, cipher_direction=direction)
+            </code></pre>
+            <p>
+                الحل هو ان نجعلها داخل حلقة 
+                while
+                وسوف نضيف متغير جديد اسمه 
+                should_continue
+                وقيمته الاولية 
+                True
+                ونضعه شرط للحلقة 
+                while
+                وعندما نريد ايقاف الحلقة يجب ان نقوم بقلب قيمة المتغير 
+                should_continue
+                داخل الحلقة اذن بعد نهاية التشفير او فك التشفير اي بعد منادات الدالة
+                caesar
+                نسأله سؤالا اكتب 
+                yes 
+                لتعيد العملية او 
+                no 
+                لنتهي البرنامج 
+            </p>
+            <pre><code>
+should_end = False
+while not should_end:
+    direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
+    text = input("Type your message:\n").lower()
+    shift = int(input("Type the shift number:\n"))
+
+    shift = shift % 26
+
+    caesar(start_text=text, shift_amount=shift, cipher_direction=direction)
+
+    restart = input("Type 'yes' if you want to go again. Otherwise type 'no'.\n")
+    if restart == "no":
+        should_end = True
+        print("Goodbye")
+            </code></pre>
+            <p>
+                وهكذا نكون قد انهينا البرنامج كاملا.
+            </p>
+            <p>
+                الكود كاملا:
+            </p>
+            <pre><code>
+alphabet = [
+'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o',
+'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'a', 'b', 'c', 'd',
+'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
+'t', 'u', 'v', 'w', 'x', 'y', 'z'
+]
+
+
+def caesar(start_text, shift_amount, cipher_direction):
+    end_text = ""
+    if cipher_direction == "decode":
+        shift_amount *= -1
+    for char in start_text:
+        if char in alphabet:
+            position = alphabet.index(char)
+            new_position = position + shift_amount
+            end_text += alphabet[new_position]
+        else:
+            end_text += char
+    print(f"Here's the {cipher_direction}d result: {end_text}")
+
+
+from art import logo
+print(logo)
+
+should_end = False
+while not should_end:
+    direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
+    text = input("Type your message:\n").lower()
+    shift = int(input("Type the shift number:\n"))
+    
+    shift = shift % 26
+
+    caesar(start_text=text, shift_amount=shift, cipher_direction=direction)
+
+    restart = input("Type 'yes' if you want to go again. Otherwise type 'no'.\n")
+    if restart == "no":
+        should_end = True
+        print("Goodbye")
+            </code></pre>
+        </div>
+
+    </div>
+</body>
+
+</html>
